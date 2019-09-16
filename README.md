@@ -8,6 +8,12 @@ The Capstone Project gives you a chance to integrate what you've learned through
 
 In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
 
+## New Features:
+* Competition mode:
+  * A new snake is created for the second player. The seconed player can use key 'w', 'a', 's' and 'd' to control the second snake.
+  * When a snake's head hits the body itself or any part from the other snake, it dies and it's score goes 0.
+  * If any snake dies, game is over and the play with higher score wins.
+  
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
