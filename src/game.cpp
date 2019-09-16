@@ -37,7 +37,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // After every second, update the window title.
     if (frame_end - title_timestamp >= 1000) {
-      renderer.UpdateWindowTitle(score, frame_count);
+      renderer.UpdateWindowTitle(score, score_p2, frame_count);
       frame_count = 0;
       title_timestamp = frame_end;
     }
@@ -67,16 +67,24 @@ void Game::PlaceFood() {
 }
 
 void Game::Update() {
-  if (!snake.alive) return;
+  if (!snake.alive || !snake_p2.alive) {
+	if (!snake.alive) {
+		score = 0;
+	}
+	if (!snake_p2.alive) {
+		score_p2 = 0;
+	}
+	return;
+  }
 
-  snake.Update();
-  snake_p2.Update();
+  snake.Update(snake_p2);
+  snake_p2.Update(snake);
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);
 
-  int p2_new_x = static_cast<int>(snake.head_x);
-  int p2_new_y = static_cast<int>(snake.head_y);
+  int p2_new_x = static_cast<int>(snake_p2.head_x);
+  int p2_new_y = static_cast<int>(snake_p2.head_y);
 
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {

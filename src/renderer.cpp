@@ -84,7 +84,7 @@ void Renderer::Render(Snake const snake, Snake const snake_p2, SDL_Point const &
   block.x = static_cast<int>(snake_p2.head_x) * block.w;
   block.y = static_cast<int>(snake_p2.head_y) * block.h;
   if (snake_p2.alive) {
-	SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
+	SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x7A, 0xCC, 0xFF);
   } else {
 	SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   }
@@ -94,7 +94,7 @@ void Renderer::Render(Snake const snake, Snake const snake_p2, SDL_Point const &
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps) {
-  std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
+void Renderer::UpdateWindowTitle(int score, int score_p2, int fps) {
+  std::string title{"P1 Snake Score: " + std::to_string(score) + "\tP2 Snake Score: " + std::to_string(score_p2) + "\tFPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
